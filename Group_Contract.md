@@ -35,7 +35,7 @@ This contract file is agreed by memebers of group19 of DSCI_522 of 2020 Universi
 
 # How to deal with conflict
 
-1. If there's conflict, try one on one conversation first. Try to understand each other's view points. If not solved move it to the team. If still can't be solved move to MDS instructor.
+1. If there's conflict, try one on one conversation first. Try to understand each other's view points. If it is not solved move it to the team. If still can't be solved move to MDS instructor.
 2. Try to set up expectations and buffer space to avoid last-min drama. 
 
 # Team meeting schdule (PST)
