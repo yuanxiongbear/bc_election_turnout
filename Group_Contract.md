@@ -1,49 +1,49 @@
-DSCI 522 Team19 Group Contract
+# DSCI 522 Team19 Group Contract
 
-Description 
+# Description 
 
 This contract file is agreed by memebers of group19 of DSCI_522 of 2020 University of British Columbia Master of Data Science program. It describes the expectations, ways of collabration and responsibilities of each group member. The file is created to ensure a healthy team work environment and to accomplish a high quality final project. All the work of this project will follow UBC MDS policies https://ubc-mds.github.io/policies/.
 
-Content 
+# Content 
+
 1. Team member introduction
-2. Availability of group memebers
-3. Project idea
-4. Expectations
-5. Responsibility
-6. How to deal with conflict
+2. Expectations
+3. Responsibility
+4. How to deal with conflict
+5. Team meeting schedule 
 
+# Team Member introduction 
 
-Team Member introduction 
 1. Rafael Pilliard Hellwig.
-Background: Law/Int’l Relations. Worked in micro-econmic development with USAID in research and evaluation. Experience with surveys. 
-Strength: R, drake, analysis, surveys, economics. 
 2. Chad Neald. 
-Background: Physics, little bit of GIS knowledge. 
-Strength: Math. 
-3. 
+3. Yuan Xiong.
+4. Kamal 
 
+# Expectation 
 
+1. Open to communications. Check messages on slack/github at least once a day. Maybe more leading up to a deadline. 
+2. Big decision should be made after all team members have had a chance to provide input. 
+3. Show up to team meetings. 
 
-Availability of group memebers. 
-1. Rafeal: Nothing fixed.
-2. Chad: Not available for the majority of Mondays/Wednesday evenings. Work most on Thursday through Sat. 
-3. Kamal: Flexible/ just some morning I have to work on my papers. 
-4. Yuan: Not availabe for majority of Tuesday and Monday/Wednesday/Thursday 5-9 pm.
+# Responsibility 
+## Milestone1: 
+1. Each member is expected to complete 'Project Proposal Discussion Thread' and 'EDA Analysis for Milestone 1' independtly. 
+2. Raf's individual responsibility includes 'Propose a Directory Structure' and 'Add a Code of Conduct File'. 
+3. Chad's individual responsibility includes 'Create Descriptive Readme' and 'Create a License File'. 
+4. Yuan's individual responsibility includes 'Add a teamwork contract'. 
+5. Kamal's individual responsibility includes 'Create a Release Version for Milestone 1' and 'Add a contributing file'. 
 
-Project idea
-The Research question of our group is to investigate whether British Columbia electoral districts that are more competitive have greater voter turnout? 
-Our data srouce will be based on 2017 British Columbia election result. link here: https://elections.bc.ca/resources/results/provincial-election-results/
+# How to deal with conflict
 
+1. If there's conflict, try one on one conversation first. Try to understand each other's view points. If not solved move it to the team. If still can't be solved move to MDS instructor.
+2. Try to set up expectations and buffer space to avoid last-min drama. 
 
-Expectation 
+# Team meeting schdule (PST)
 
-
-Responsibility 
-
-
-
-How to deal with conflict
-
+1. Monday at noon.
+2. Lecture session on Tuesday 10:30 am. 
+3. Lab session on Wednesday at 2 pm. 
+4. Friday 5 pm (subject to chang)
 
 
 
