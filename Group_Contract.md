@@ -17,7 +17,7 @@ This contract file is agreed by memebers of group19 of DSCI_522 of 2020 Universi
 1. Rafael Pilliard Hellwig.
 2. Chad Neald. 
 3. Yuan Xiong.
-4. Kamal 
+4. Kamal Moravej
 
 # Expectation 
 
