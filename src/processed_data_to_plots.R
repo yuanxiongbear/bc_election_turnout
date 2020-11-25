@@ -24,7 +24,7 @@ dr_violin_plot <- function (file_path_input, file_path_output) {
          x = "Percentage of Eligible Voters Who Partcipated in ED",
          y = "Density") +
     stat_summary(fun = mean)
-  ggsave('file_path_output/violin_plot.png')
+  ggsave(path = 'file_path_output', filename = 'violin_plot.png')
 }
 
 dr_violin_plot(opt$file_path_input, opt$file_path_output)
@@ -35,7 +35,7 @@ dr_correlation_matrix <- function (file_path_input, file_path_output) {
     select(where(is.numeric)) %>%
     GGally::ggcorr(label = TRUE, label_round = 2) +
     labs(title = "Correlation Matrix")
-  ggsave('file_path_output/cor_matrix.png')
+  ggsave(path = 'file_path_output', filename = 'cor_matrix.png')
 }
 
 dr_correlation_matrix(opt$file_path_input, opt$file_path_output)
@@ -57,7 +57,7 @@ dr_scatter_plot <- function(file_path_input, file_path_output) {
          x = "Competitiveness\n(Vote Share of the Runner-Up MINUS Vote Share of the Winner)",
          shape = "Election") +
     theme(legend.position = "right", legend.direction = "vertical")
-  ggsave('file_path_output/scatter_plot.png')
+  ggsave(path = 'file_path_output', filename = 'scatter_plot.png')
 }
 
 dr_scatter_plot(opt$file_path_input, opt$file_path_output)
