@@ -37,14 +37,15 @@ The exploratory analysis shows that an electoral district's competitiveness is p
 ## Dependencies
 
 - R version 3.6.1 and R packages:
+    - cowplot=1.1.0
     - dataMaid=1.4
     - docopt=0.7.1
     - GGally=2.0
+    - ggpubr=0.4.0
     - ggthemes=4.2
     - here=0.1
     - janitor=2.0.1
     - tidyverse=1.3
-    
 ## Usage
 
 The datasets needed for the exploratory data analysis are already provided in `data/raw`. To download a fresh copy of the data from the public catalogue, delete the CSV files and run the following from the command line/terminal (from the project root directory).

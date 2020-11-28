@@ -52,6 +52,25 @@ The pvr dataset contains the number of votes for each candidate and their respec
 
 ## Analysis
 
+The scatter plot of competitiveness and turnout is shown in Figure 2. Figure 2 shows that an electoral district's competitiveness is potentially positively correlated with its voter turnout rate. This matches our expectations. However, in order to understand if their correlation is statistically significant, We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+
+> **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
+
+> **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
+
+In order to use the `cor.test()` we need to run some preliminary test to check the assumptions of `cor.test()`. The first condition of `cor.test()` is the normality of two variables. We check the normality using Q-Q (quantile-quantile plots) plots (Figure 3). Figure 3 shows that the normality assumption is valid. The second condition is the  linearity of covariation which can be examined by looking at the scatter plot of two variables(Figure 2). Since the scatter plot does not contain curved pattern, we consider this condition e valid as well.'
+
+```{r echo = FALSE, error=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
+library("ggpubr")
+plot1 = ggqqplot(bc_election_data$competitiveness, ylab = "competitiveness")
+
+plot2 = ggqqplot(bc_election_data$turnout, ylab = "turnout")
+
+cowplot::plot_grid(plot1, plot2, ncol = 2)
+```
+
+
+
 ## Results and Discussion
 
 ## References
