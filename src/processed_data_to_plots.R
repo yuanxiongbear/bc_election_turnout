@@ -21,6 +21,7 @@ opt <- docopt(doc)
 dr_violin_plot <- function (input, out_dir) {
   data <- readRDS(input)
   violin_plot <- data %>%
+    filter(str_detect(event_name, "General Election")) %>%
     ggplot(aes(y = turnout, x = factor(str_wrap(event_name, 15)))) +
     geom_violin(size = 1) +
     scale_y_continuous(labels = scales::percent_format(1)) +
