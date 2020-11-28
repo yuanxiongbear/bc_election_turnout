@@ -1,0 +1,88 @@
+---
+title: "Higher Turnout Rate For Competitive Election Districts in BC"
+output: 
+  html_document:
+    toc: true
+---
+## Summary
+
+## Introduction
+
+In the past 2020 US election, it was reported [that the voter turnout rate was substantially higher in battleground states than spectator states](https://www.nationalpopularvote.com/voter-turnout-substantially-higher-battleground-states-spectator-states) [1]. We are interested to know if a similar pattern was also observed in the provincial elections of British Columbia in the past few years. Therefore, in this data analysis project, we work with publicly available data sets to answer the following inferential question:
+
+> Are close elections correlated with higher voter turnout?
+
+To answer this question, we have used two publicly available data sets from the BC government [provincial voter participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) and [provincial voting results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792). More details about the data can be found in the "Data" section of this report. This data set gives us the opportunity to investigate the relation between the share difference in votes between the winner and the runner up and the turn out at different Electoral District for several years.
+
+To answer this question, we investigate the relationship between the following two variables measured at the level of the electoral district (ED): voter turnout rate and the competitiveness of a race. The voter turnout rate is calculated as the number of valid votes cast divided by the number of registered voters in an ED for a given election. An electoral district's competitiveness is calculated as the negative difference in share of the votes between winner and runner-up.  We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+
+> **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
+
+> **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
+
+Our Type I error will be set at alpha = 0.05. We expect this correlation to be positive.
+
+An exploratory data analysis (EDA) can be found in the [`eda/`](eda/) directory. The summary of `provincial voting results` dataset is as follows:
+
+<!--![](eda/bc_election_turnout_files/figure-html/pvr.jpg)-->
+
+Similarly, a summary of `provincial voter participation` data set is as follows:
+
+<!--![](eda/bc_election_turnout_files/figure-html/pvp.jpg)-->
+
+Looking at the correlation between different variables in our wrangled data set, we see the following correlations:
+
+<!--![](eda/bc_election_turnout_files/figure-html/corrplot-1.png)-->
+
+We see that there is 0.27 correlation between `turnout` and `competitiveness`. We also take a look at the turnout against competitiveness in a scatter plots with a trend line. 
+
+<!--![](eda/bc_election_turnout_files/figure-html/scatterplot-1.png)-->
+
+The exploratory analysis shows that an electoral district's competitiveness is positively correlated with its voter turnout rate. This matches our expectations. More analysis will be done to complete the project in coming weeks.
+
+
+
+## Data
+
+The data for this project comes from Elections BC and is available under the terms of use of Elections BC's data which can be found  [here](https://elections.bc.ca/docs/EBC-Open-Data-Licence.pdf). Specifically, the project makes use of the "provincial_voter_participation_by_age_group" (pvp) dataset located [here](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) and the "provincial_voting_results" (pvr) dataset found [here](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792).
+
+The pvp dataset, as the name suggests, includes the number of votes as well as the number of registered voters all broken down by election and election district. With this information, we can extrapolate the turnout rate per election district per election.
+
+The pvr dataset contains the number of votes for each candidate and their respective party broken down again by election and election district. From this, we can determine how competitive a race was by calculating the difference in votes between the top two candidates. This is explained in more detail below.Testing
+
+## Analysis
+
+The scatter plot of competitiveness and turnout is shown in Figure 2. Figure 2 shows that an electoral district's competitiveness is potentially positively correlated with its voter turnout rate. This matches our expectations. However, in order to understand if their correlation is statistically significant, We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+
+> **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
+
+> **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
+
+In order to use the `cor.test()` we need to run some preliminary test to check the assumptions of `cor.test()`. The first condition of `cor.test()` is the normality of two variables. We check the normality using Q-Q (quantile-quantile plots) plots (Figure 3). Figure 3 shows that the normality assumption is valid. The second condition is the  linearity of covariation which can be examined by looking at the scatter plot of two variables(Figure 2). Since the scatter plot does not contain curved pattern, we consider this condition e valid as well.'
+
+```{r echo = FALSE, error=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
+library("ggpubr")
+plot1 = ggqqplot(bc_election_data$competitiveness, ylab = "competitiveness")
+
+plot2 = ggqqplot(bc_election_data$turnout, ylab = "turnout")
+
+cowplot::plot_grid(plot1, plot2, ncol = 2)
+```
+
+
+
+## Results and Discussion
+
+Performing the Pearson correlation test in R with `cor.test()` produces the results in Table 1. We observe a positive correlation of 0.27 between the competitiveness of a district and its voter turnout. As the p-value $p < .001$ falls below our alpha threshold, we reject the null hypothesis and conclude that the linear dependence is statistically significant.
+
+```{r, echo=FALSE}
+cor_test <- readRDS(here::here("data", "processed", "cor_test.rds"))
+cap <- "Table 1. Pearson Correlation Test Results"
+knitr::kable(cor_test, caption = cap)
+```
+
+While the statistical test above does not make any causal claim, the findings do align with the way many political pundits think about certain causal relationships in elections. Namely, that common thinking is that rivaling political parties, informed by pre-election polls, invest more time and money in campaigning and "getting out the vote" in districts they think might swing the election. This behaviour is likely a product of our "first-past-the-post" system, in which the winner takes all. An interesting angle of analysis to probe this potential explanation further would be to compare whether this correlation holds in jurisdictions that use proportional representation.
+
+Subsequent analysis could also continue build out a model explaining the voter turnout through multiple regression. Some key variables explored during the exploratory stages includes marginally predictive variables such as the election year. Inclusion of additional variables, and careful quasi-experimental methods and analysis-- could help build this model out to a more useful and actionable model for actors in the political space.
+
+## References
