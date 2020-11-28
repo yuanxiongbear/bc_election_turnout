@@ -33,11 +33,12 @@ positive correlation.
 In the past 2020 US election, it was reported [that the voter turnout
 rate was substantially higher in battleground states than spectator
 states](https://www.nationalpopularvote.com/voter-turnout-substantially-higher-battleground-states-spectator-states)
-(www.NationalPopularVote.com 2020). We are interested to know if a
-similar pattern was also observed in the provincial elections of British
-Columbia in the past few years. Therefore, in this data analysis
-project, we work with publicly available data sets to answer the
-following inferential question:
+(“Voter Turnout Is Substantially Higher in Battleground States Than
+Spectator States” 2020). We are interested to know if a similar pattern
+was also observed in the provincial elections of British Columbia in the
+past few years. Therefore, in this data analysis project, we work with
+publicly available data sets to answer the following inferential
+question:
 
 > Are close elections correlated with higher voter turnout?
 
@@ -265,6 +266,14 @@ Extension to ’ggplot2’*. <https://CRAN.R-project.org/package=GGally>.
 
 </div>
 
+<div id="ref-US_voter_turnout" class="csl-entry">
+
+“Voter Turnout Is Substantially Higher in Battleground States Than
+Spectator States.” 2020. 2020.
+<https://www.nationalpopularvote.com/sites/default/files/npv-voter-turnout-memo-v9-2020-5-9.pdf>.
+
+</div>
+
 <div id="ref-testthat" class="csl-entry">
 
 Wickham, Hadley. 2011. “Testthat: Get Started with Testing.” *The R
@@ -297,7 +306,7 @@ Operations*. <https://CRAN.R-project.org/package=stringr>.
 <div id="ref-tidyverse" class="csl-entry">
 
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy
-D’Agostino McGowan, Romain FranÃÂ§ois, Garrett Grolemund, et al. 2019.
+D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019.
 “Welcome to the <span class="nocase">tidyverse</span>.” *Journal of Open
 Source Software* 4 (43): 1686. <https://doi.org/10.21105/joss.01686>.
 
@@ -305,8 +314,8 @@ Source Software* 4 (43): 1686. <https://doi.org/10.21105/joss.01686>.
 
 <div id="ref-dplyr" class="csl-entry">
 
-Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2020.
-*Dplyr: A Grammar of Data Manipulation*.
+Wickham, Hadley, Romain FranÃ§ois, Lionel Henry, and Kirill MÃ¼ller.
+2020. *Dplyr: A Grammar of Data Manipulation*.
 <https://CRAN.R-project.org/package=dplyr>.
 
 </div>
@@ -316,14 +325,6 @@ Wickham, Hadley, Romain François, Lionel Henry, and Kirill Müller. 2020.
 Wilke, Claus O. 2020. *Cowplot: Streamlined Plot Theme and Plot
 Annotations for ’ggplot2’*.
 <https://CRAN.R-project.org/package=cowplot>.
-
-</div>
-
-<div id="ref-US_voter_turnout" class="csl-entry">
-
-www.NationalPopularVote.com. 2020. “Voter Turnout Is Substantially
-Higher in Battleground States Than Spectator States.” 2020.
-<https://www.nationalpopularvote.com/sites/default/files/npv-voter-turnout-memo-v9-2020-5-9.pdf>.
 
 </div>
 
