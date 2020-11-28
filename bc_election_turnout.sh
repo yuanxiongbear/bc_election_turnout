@@ -15,7 +15,7 @@ Rscript src/load_process.R \
 --out_dir=data/processed
 
 # Create the plots
-Rscript src/processed_data_to_plots.R --input=data/processed/bc_election_by_district.rds --out_dir=data/processed
+Rscript src/processed_data_to_plots.R --input=data/processed/bc_election_by_district.rds --out_dir=data/eda/bc_election_turnout_files/figure-html
 
 # Run the correlation test 
 Rscript src/run_test.R --input=data/processed/bc_election_by_district.rds --out_dir=data/processed

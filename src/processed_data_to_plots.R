@@ -14,6 +14,7 @@ Options:
 
 library(tidyverse)
 library(docopt)
+library(ggpubr)
 
 opt <- docopt(doc)
 
@@ -64,3 +65,14 @@ dr_scatter_plot <- function(input, out_dir) {
 }
 
 dr_scatter_plot(opt[['--input']], opt[['--out_dir']])
+
+dr_cow_plot <- function(input, out_dir) {
+  data <- readRDS(input)
+  plot1 = ggqqplot(bc_election_data$competitiveness, ylab = "competitiveness")
+  plot2 = ggqqplot(bc_election_data$turnout, ylab = "turnout")
+  cow_plot <- cowplot::plot_grid(plot1, plot2, ncol = 2)
+  ggsave(filename = here::here(out_dir, 'cow_plot.png'))
+}
+
+dr_cow_plot(opt[['--input']], opt[['--out_dir']])
+
