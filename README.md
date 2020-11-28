@@ -1,65 +1,115 @@
-# BC Election Turnout project
 
-## Introduction
+# BC Election Turnout and Competitiveness Project
 
-In the past 2020 US election, it was reported [that the voter turnout rate was substantially higher in battleground states than spectator states](https://www.nationalpopularvote.com/voter-turnout-substantially-higher-battleground-states-spectator-states) [1]. We are interested to know if a similar pattern was also observed in provincial election of British Columbia in the past few years. Therefore, in this data analysis project, we work on publicly available data sets to answer the following inferential question:
+authors:
 
-> Are close elections correlated with higher voter turnout?
+-   Kamal Moravej Jahromi
 
-To answer this question, we have used two publicly available data set from BC government [provincial voter participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) and [provincial voting results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792). See the terms of use of Elections BC's data [here](https://elections.bc.ca/docs/EBC-Open-Data-Licence.pdf). The data provides us voting results from 2005 - 2017 for different Electoral District (ED). This data set gives us the opportunity to investigate the relation between the share difference in votes between the winner and the runner up and the turn out at different Electoral District for several years.
+-   Chad Neald
 
-To answer this question, we investigate the relationship between the following two variables measured at the level of the electoral district (ED): voter turnout rate and the competitiveness of a race. The voter turnout rate is calculated as number of valid votes cast divided by number of registered voters in an ED for a given election. An electoral district's competitiveness is calculated as the negative difference in share of the votes between winner and runner-up.  We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+-   Rafael Pilliard Hellwig
 
-> **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
+-   Yuan Xiong
 
-> **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
+date: 28/11/2020
 
-Our Type I error will be set at alpha = 0.05. We expect this correlation to be positive.
+A group project for DSCI 522 through the Master of Data Science Program
+at the University of British Columbia.
 
-An exploratory data analysis (EDA) can be found in the [`eda/`](eda/) directory. The summary of `provincial voting results` dataset is as follows:
+## About
 
-![](eda/bc_election_turnout_files/figure-html/pvr.jpg)
+Are close elections correlated with higher voter turnout? This is the
+driving question behind our project.
 
-Similarly, a summary of `provincial voter participation` data set is as follows:
+We aim to determine if there is a correlation between voter turnout and
+the competitiveness of an election district. Specifically, we look at
+elections occurring in British Columbia between 2005 and 2017. To answer
+this question, we have used two publicly available data sets from
+Elections BC which “Contains information licenced under the Elections BC
+Open Data Licence” available
+[here](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf)
+(“ELECTIONS BC OPEN DATA LICENCE,” n.d.). The first data set is the
+[provincial voter
+participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
+(2018a) dataset and the second is the [provincial voting
+results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
+(2018b) dataset. These are referred to as pvp and pvr respectively
+throughout the project repository.
 
-![](eda/bc_election_turnout_files/figure-html/pvp.jpg)
+These data sets give us the opportunity to investigate the relation
+between the share difference in votes between the winner and the runner
+up and the turn out at different electoral districts for several
+election years. Our hypotheses are stated below:
 
-Looking at the correlation between different variables in our wrangled data set, we see the following correlations:
+> **Null Hypothesis:** The correlation coefficient between the voter
+> turnout rate and the race competitiveness is equal to zero.
 
-![](eda/bc_election_turnout_files/figure-html/corrplot-1.png)
+> **Alternative Hypothesis:** The corrrelation coefficient between the
+> voter turnout rate and the race competitiveness is not equal to zero.
 
-We see that there is 0.27 correlation between `turnout` and `competitiveness`. We also take a look at the turnout against competitiveness in a scatter plots with a trend line. 
+Using a Pearson correlation test we arrive at a p-value of  &lt; 0.001
+which is less than our alpha value of *α* = 0.05. Our final analysis
+shows a positive correlation of 0.27 between voter turnout and
+competitiveness. Based on this information, we conclude that there is a
+statistically significant association between voter turnout and
+competitiveness for the examined elections in BC. The plot below
+captures the positive correlation.
 
- ![](eda/bc_election_turnout_files/figure-html/scatterplot-1.png)
+![](eda/bc_election_turnout_files/figure-html/scatterplot-1.png)
 
-The exploratory analysis shows that an electoral district's competitiveness is positively correlated with its voter turnout rate. This matches our expectations. More analysis will be done to complete the project in coming weeks.
+## Usage
+
+To download the data, generate the figures, and replicate the analysis
+of this project you need to clone this repository and install all
+dependencies listed below. Once that is complete, you need to run the
+bc\_election\_turnout.sh shell script from the root of this project by
+executing the following from the command line:
+
+``` bash
+bash bc_election_turnout.sh
+```
 
 ## Dependencies
 
-- R version 3.6.1 and R packages:
-    - cowplot=1.1.0
-    - dataMaid=1.4
-    - docopt=0.7.1
-    - GGally=2.0
-    - ggpubr=0.4.0
-    - ggthemes=4.2
-    - here=0.1
-    - janitor=2.0.1
-    - tidyverse=1.3
-## Usage
+-   R version 3.6.1 and R packages:
+    -   cowplot=1.1.0
+    -   dataMaid=1.4
+    -   docopt=0.7.1
+    -   GGally=2.0
+    -   ggpubr=0.4.0
+    -   ggthemes=4.2
+    -   here=0.1
+    -   janitor=2.0.1
+    -   tidyverse=1.3
 
-The datasets needed for the exploratory data analysis are already provided in `data/raw`. To download a fresh copy of the data from the public catalogue, delete the CSV files and run the following from the command line/terminal (from the project root directory).
+## Report
 
-```bash
-Rscript src/download_data.R \
-    https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792/download/provincial_voting_results.csv \
-    https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4/download/provincial_voter_participation_by_age_group.csv \
-    --path=data/raw
-```
-
-This will download the two datasets into a `data/raw` directory relative to your root directory. Alternatively you can specify your own relative path where to save the data.
+The final report can be found
+[here](https://github.com/UBC-MDS/bc_election_turnout/blob/main/doc/bc_election_turnout_report.html)
 
 ## References
 
-1. https://www.nationalpopularvote.com/voter-turnout-substantially-higher-battleground-states-spectator-states
+<div id="refs" class="references csl-bib-body hanging-indent">
 
+<div id="ref-pvp" class="csl-entry">
+
+2018a. 2018.
+<https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
+
+</div>
+
+<div id="ref-pvr" class="csl-entry">
+
+2018b. 2018.
+<https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
+
+</div>
+
+<div id="ref-BC_elections_license" class="csl-entry">
+
+“ELECTIONS BC OPEN DATA LICENCE.” n.d.
+<https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
+
+</div>
+
+</div>
