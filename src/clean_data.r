@@ -4,7 +4,7 @@
 "This script read the CSV data from a given path and process it.
 At the end, it write the processed csv data to the given path.
 
-Usage: src/load_process.R --pvr_input=<pvr> --pvp_input=<pvp> --out_dir=<path>
+Usage: src/clean_data.R --pvr_input=<pvr> --pvp_input=<pvp> --out_dir=<path>
 
 Options:
 --pvr_input=<pvr>                 The file path of provintial_voting_results.csv
