@@ -18,6 +18,8 @@ library(ggpubr)
 
 opt <- docopt(doc)
 
+dir.create(here::here(opt$out_dir), recursive = TRUE)
+
 dr_violin_plot <- function (input, out_dir) {
   data <- readRDS(input)
   violin_plot <- data %>%
@@ -62,7 +64,7 @@ dr_scatter_plot <- function(input, out_dir) {
           x = "Competitiveness\n(Vote Share of the Runner-Up MINUS Vote Share of the Winner)",
           shape = "Election") +
      theme(legend.position = "right", legend.direction = "vertical")
-   ggsave(filename = here::here(out_dir, 'scatter_plot.png'))
+   ggsave(filename = here::here(out_dir, 'scatter_plot.png'), width = 8, height = 6)
 }
 
 dr_scatter_plot(opt[['--input']], opt[['--out_dir']])
@@ -72,7 +74,7 @@ dr_cow_plot <- function(input, out_dir) {
   plot1 = ggqqplot(data$competitiveness, ylab = "competitiveness")
   plot2 = ggqqplot(data$turnout, ylab = "turnout")
   cow_plot <- cowplot::plot_grid(plot1, plot2, ncol = 2)
-  ggsave(filename = here::here(out_dir, 'cow_plot.png'))
+  ggsave(filename = here::here(out_dir, 'cow_plot.png'), width = 8, heigh = 6)
 }
 
 dr_cow_plot(opt[['--input']], opt[['--out_dir']])

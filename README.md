@@ -1,5 +1,5 @@
-
-# BC Election Turnout and Competitiveness Project
+BC Election Turnout and Competitiveness Project
+===============================================
 
 authors:
 
@@ -16,7 +16,8 @@ date: 28/11/2020
 A group project for DSCI 522 through the Master of Data Science Program
 at the University of British Columbia.
 
-## About
+About
+-----
 
 Are close elections correlated with higher voter turnout? This is the
 driving question behind our project.
@@ -28,7 +29,7 @@ this question, we have used two publicly available data sets from
 Elections BC which “Contains information licenced under the Elections BC
 Open Data Licence” available
 [here](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf)
-(“ELECTIONS BC OPEN DATA LICENCE,” n.d.). The first data set is the
+(“Elections BC Open Data Licence,” n.d.). The first data set is the
 [provincial voter
 participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
 (2018a) dataset and the second is the [provincial voting
@@ -55,9 +56,10 @@ statistically significant association between voter turnout and
 competitiveness for the examined elections in BC. The plot below
 captures the positive correlation.
 
-![](eda/bc_election_turnout_files/figure-html/scatterplot-1.png)
+![](doc/images/scatter_plot.png)
 
-## Usage
+Usage
+-----
 
 To download the data, generate the figures, and replicate the analysis
 of this project you need to clone this repository and install all
@@ -65,11 +67,10 @@ dependencies listed below. Once that is complete, you need to run the
 bc\_election\_turnout.sh shell script from the root of this project by
 executing the following from the command line:
 
-``` bash
-bash bc_election_turnout.sh
-```
+    bash bc_election_turnout.sh
 
-## Dependencies
+Dependencies
+------------
 
 -   R version 3.6.1 and R packages:
     -   cowplot=1.1.0
@@ -82,34 +83,19 @@ bash bc_election_turnout.sh
     -   janitor=2.0.1
     -   tidyverse=1.3
 
-## Report
+Report
+------
 
-The final report can be found
-[here](https://github.com/UBC-MDS/bc_election_turnout/blob/main/doc/bc_election_turnout_report.html)
+The final report can be found [here](doc/bc_election_turnout_report.md)
 
-## References
-
-<div id="refs" class="references csl-bib-body hanging-indent">
-
-<div id="ref-pvp" class="csl-entry">
+References
+----------
 
 2018a. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
 
-</div>
-
-<div id="ref-pvr" class="csl-entry">
-
 2018b. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
 
-</div>
-
-<div id="ref-BC_elections_license" class="csl-entry">
-
-“ELECTIONS BC OPEN DATA LICENCE.” n.d.
+“Elections BC Open Data Licence.” n.d.
 <https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
-
-</div>
-
-</div>

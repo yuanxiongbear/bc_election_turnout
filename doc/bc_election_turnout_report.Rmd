@@ -1,8 +1,14 @@
 ---
 title: "Higher Turnout Rate For Competitive Election Districts in BC"
 bibliography: references.bib
+nocite: |
+  @BC_elections_license
 output: 
   github_document:
+    toc: true
+  pdf_document: 
+    toc: true
+  html_document:
     toc: true
 ---
 ## Summary
@@ -31,44 +37,52 @@ An exploratory data analysis (EDA) can be found in the `eda/` directory.
 
 ## Data
 
-The data for this project comes from Elections BC and "Contains information licenced under the Elections BC Open Data Licence" available [here](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf) [@BC_elections_license]. The project makes use of the ["provincial_voter_participation_by_age_group"](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) [@pvp] dataset and the ["provincial_voting_results"](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792) [@pvr] dataset.
+The data for this project comes from Elections BC and "[c]ontains information licenced under the [Elections BC Open Data Licence"](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf). The project makes use of the ["provincial_voter_participation_by_age_group"](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) [@pvp] dataset and the ["provincial_voting_results"](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792) [@pvr] dataset.
 
-The pvp dataset, as the name suggests, includes the number of votes as well as the number of registered voters broken down by election and election district. With this information, we can extrapolate the turnout rate per election district for each election. A summary of the dataset is shown in the image below.
+The pvp dataset, as the name suggests, includes the number of votes as well as the number of registered voters broken down by election and election district. With this information, we can extrapolate the turnout rate per election district for each election. A summary of the dataset is shown in Table 1.
 
-![](../eda/bc_election_turnout_files/figure-html/pvp.jpg)
+```{r, tab_1, fig.cap="Table 1. Summary of provincial voting participation dataset.", echo = FALSE, out.width='100%'}
+knitr::include_graphics("../eda/bc_election_turnout_files/figure-html/pvp.jpg")
+```
 
-The pvr dataset contains the number of votes for each candidate and their respective party broken down again by election and election district. From this, we can determine how competitive a race was by calculating the difference in votes between the top two candidates. A summary of the dataset is shown in the image below.
 
-![](../eda/bc_election_turnout_files/figure-html/pvr.jpg)
+The pvr dataset contains the number of votes for each candidate and their respective party broken down again by election and election district. From this, we can determine how competitive a race was by calculating the difference in votes between the top two candidates. A summary of the dataset is shown in Table 2.
+
+```{r, fig.cap="Table 2. Summary of provincial voting results dataset.", echo = FALSE, out.width='100%'}
+knitr::include_graphics("../eda/bc_election_turnout_files/figure-html/pvr.jpg")
+```
 
 ## Analysis
 
-The scatter plot of competitiveness and turnout is shown in Figure 2. Figure 2 shows that an electoral district's competitiveness is potentially positively correlated with its voter turnout rate. This matches our expectations. However, in order to understand if their correlation is statistically significant, we will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+The scatter plot of competitiveness and turnout is shown in Figure 1. Figure 1 shows that an electoral district's competitiveness is potentially positively correlated with its voter turnout rate. This matches our expectations. However, in order to understand if their correlation is statistically significant, we will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
 
 > **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
 
 > **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
 
-In order to use the `cor.test()` we need to run some preliminary tests to check the assumptions of `cor.test()`. The first condition of `cor.test()` is the normality of two variables. We check the normality using Q-Q plots (quantile-quantile plots) (Figure 3). Figure 3 shows that the normality assumption is valid. The second condition is the  linearity of covariation which can be examined by looking at the scatter plot of two variables (Figure 2). Since the scatter plot does not display a curved pattern, we consider this condition to be valid as well.
+In order to use the `cor.test()` we need to run some preliminary tests to check the assumptions of `cor.test()`. The first condition of `cor.test()` is the normality of two variables. We check the normality using Q-Q plots (quantile-quantile plots) (Figure 2). Figure 2 shows that the normality assumption is valid. The second condition is the  linearity of covariation which can be examined by looking at the scatter plot of two variables (Figure 1). Since the scatter plot does not display a curved pattern, we consider this condition to be valid as well.
 
-```{r echo = FALSE, error=FALSE, message=FALSE, warning=FALSE, fig.width= 10}
-# library(ggpubr)
-# plot1 = ggqqplot(bc_election_data$competitiveness, ylab = "competitiveness")
-# 
-# plot2 = ggqqplot(bc_election_data$turnout, ylab = "turnout")
-# 
-# cowplot::plot_grid(plot1, plot2, ncol = 2)
+```{r, fig.cap = "Figure 1. A scatter plot displaying competitiveness vs turnout", echo = FALSE, out.width='100%'}
+
+knitr::include_graphics("images/scatter_plot.png")
+
+```
+
+```{r, fig.cap = "Figure 2. Q-Q plot for competitiveness and turnout.", echo = FALSE, out.width='100%'}
+
+knitr::include_graphics("images/cow_plot.png")
+
 ```
 
 
 
 ## Results and Discussion
 
-Performing the Pearson correlation test in R with `cor.test()` produces the results in Table 1. We observe a positive correlation of 0.27 between the competitiveness of a district and its voter turnout. As the p-value $p < .001$ falls below our alpha threshold, we reject the null hypothesis and conclude that the linear dependence is statistically significant.
+Performing the Pearson correlation test in R with `cor.test()` produces the results in Table 3. We observe a positive correlation of 0.27 between the competitiveness of a district and its voter turnout. As the p-value $p < .001$ falls below our alpha threshold, we reject the null hypothesis and conclude that the linear dependence is statistically significant.
 
 ```{r, echo=FALSE}
 cor_test <- readRDS(here::here("data", "processed", "cor_test.rds"))
-cap <- "Table 1. Pearson Correlation Test Results"
+cap <- "Table 3. Pearson Correlation Test Results"
 knitr::kable(cor_test, caption = cap)
 ```
 

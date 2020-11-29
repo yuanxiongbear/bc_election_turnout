@@ -76,10 +76,10 @@ An exploratory data analysis (EDA) can be found in the `eda/` directory.
 
 ## Data
 
-The data for this project comes from Elections BC and “Contains
-information licenced under the Elections BC Open Data Licence” available
-[here](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf)
-(“ELECTIONS BC OPEN DATA LICENCE,” n.d.). The project makes use of the
+The data for this project comes from Elections BC and "\[c\]ontains
+information licenced under the [Elections BC Open Data
+Licence"](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf).
+The project makes use of the
 [“provincial\_voter\_participation\_by\_age\_group”](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
 (2018a) dataset and the
 [“provincial\_voting\_results”](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
@@ -89,22 +89,36 @@ The pvp dataset, as the name suggests, includes the number of votes as
 well as the number of registered voters broken down by election and
 election district. With this information, we can extrapolate the turnout
 rate per election district for each election. A summary of the dataset
-is shown in the image below.
+is shown in Table 1.
 
-![](../eda/bc_election_turnout_files/figure-html/pvp.jpg)
+<div class="figure">
+
+<img src="../eda/bc_election_turnout_files/figure-html/pvp.jpg" alt="Table 1. Summary of provincial voting participation dataset." width="100%" />
+<p class="caption">
+Table 1. Summary of provincial voting participation dataset.
+</p>
+
+</div>
 
 The pvr dataset contains the number of votes for each candidate and
 their respective party broken down again by election and election
 district. From this, we can determine how competitive a race was by
 calculating the difference in votes between the top two candidates. A
-summary of the dataset is shown in the image below.
+summary of the dataset is shown in Table 2.
 
-![](../eda/bc_election_turnout_files/figure-html/pvr.jpg)
+<div class="figure">
+
+<img src="../eda/bc_election_turnout_files/figure-html/pvr.jpg" alt="Table 2. Summary of provincial voting results dataset." width="100%" />
+<p class="caption">
+Table 2. Summary of provincial voting results dataset.
+</p>
+
+</div>
 
 ## Analysis
 
-The scatter plot of competitiveness and turnout is shown in Figure 2.
-Figure 2 shows that an electoral district’s competitiveness is
+The scatter plot of competitiveness and turnout is shown in Figure 1.
+Figure 1 shows that an electoral district’s competitiveness is
 potentially positively correlated with its voter turnout rate. This
 matches our expectations. However, in order to understand if their
 correlation is statistically significant, we will use a two-sided
@@ -120,17 +134,35 @@ hypotheses:
 In order to use the `cor.test()` we need to run some preliminary tests
 to check the assumptions of `cor.test()`. The first condition of
 `cor.test()` is the normality of two variables. We check the normality
-using Q-Q plots (quantile-quantile plots) (Figure 3). Figure 3 shows
+using Q-Q plots (quantile-quantile plots) (Figure 2). Figure 2 shows
 that the normality assumption is valid. The second condition is the
 linearity of covariation which can be examined by looking at the scatter
-plot of two variables (Figure 2). Since the scatter plot does not
+plot of two variables (Figure 1). Since the scatter plot does not
 display a curved pattern, we consider this condition to be valid as
 well.
+
+<div class="figure">
+
+<img src="images/scatter_plot.png" alt="Figure 1. A scatter plot displaying competitiveness vs turnout" width="100%" />
+<p class="caption">
+Figure 1. A scatter plot displaying competitiveness vs turnout
+</p>
+
+</div>
+
+<div class="figure">
+
+<img src="images/cow_plot.png" alt="Figure 2. Q-Q plot for competitiveness and turnout." width="100%" />
+<p class="caption">
+Figure 2. Q-Q plot for competitiveness and turnout.
+</p>
+
+</div>
 
 ## Results and Discussion
 
 Performing the Pearson correlation test in R with `cor.test()` produces
-the results in Table 1. We observe a positive correlation of 0.27
+the results in Table 3. We observe a positive correlation of 0.27
 between the competitiveness of a district and its voter turnout. As the
 p-value *p* &lt; .001 falls below our alpha threshold, we reject the
 null hypothesis and conclude that the linear dependence is statistically
@@ -140,7 +172,7 @@ significant.
 |----------:|----------:|--------:|----------:|----------:|----------:|:-------------------------------------|:------------|
 | 0.2727315 |   5.18075 |   4e-07 |       334 | 0.1707189 | 0.3689592 | Pearson’s product-moment correlation | two.sided   |
 
-Table 1. Pearson Correlation Test Results
+Table 3. Pearson Correlation Test Results
 
 While the statistical test above does not make any causal claim, the
 findings do align with the way many political pundits think about
@@ -207,7 +239,7 @@ Language*. <https://CRAN.R-project.org/package=docopt>.
 
 <div id="ref-BC_elections_license" class="csl-entry">
 
-“ELECTIONS BC OPEN DATA LICENCE.” n.d.
+“Elections BC Open Data Licence.” n.d.
 <https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
 
 </div>

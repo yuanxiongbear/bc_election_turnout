@@ -1,5 +1,5 @@
 ---
-output: github_document
+output: md_document
 bibliography: doc/references.bib
 ---
 
@@ -33,7 +33,7 @@ These data sets give us the opportunity to investigate the relation between the 
 
 Using a Pearson correlation test we arrive at a p-value of $< 0.001$ which is less than our alpha value of $\alpha = 0.05$. Our final analysis shows a positive correlation of 0.27 between voter turnout and competitiveness. Based on this information, we conclude that there is a statistically significant association between voter turnout and competitiveness for the examined elections in BC. The plot below captures the positive correlation.
 
-![](eda/bc_election_turnout_files/figure-html/scatterplot-1.png)
+![](doc/images/scatter_plot.png)
 
 ## Usage
 
@@ -59,7 +59,7 @@ bash bc_election_turnout.sh
     
 ## Report
 
-The final report can be found [here](https://github.com/UBC-MDS/bc_election_turnout/blob/main/doc/bc_election_turnout_report.html)
+The final report can be found [here](doc/bc_election_turnout_report.md)
 
 ## References
 
