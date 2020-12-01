@@ -1,16 +1,17 @@
 # author: Rafael Pilliard Hellwig
 # date: 2020-11-24
 
-"Perform Pearson' Product Moment Correlation Test
+"Perform Pearson's Product Moment Correlation Test
 
 Usage: src/perform_statistical_test.R [--input=<input>] [--out_dir=<out_dir>]
 
 Options:
---input=<input>        Path (including filename) to cleaned data (saved as
-                       an RDS data frame with numeric columns `competitiveness`
-                       and `turnout`)
---out_dir=<out_dir>    Path to directory where the results should be saved (as
-                       an RDS file) [default: data/processed]
+--input=<input>      Path (including filename) to cleaned data (saved as
+                     an RDS data frame with numeric columns `competitiveness`
+                     and `turnout`)
+                     [default: data/processed/bc_election_by_district.rds]
+--out_dir=<out_dir>  Path to directory where the results should be saved (as
+                     an RDS file) [default: data/processed]
 " -> doc
 
 # load packages
@@ -25,7 +26,7 @@ main <- function(data, out_dir = "data/processed") {
   pvr_agg <- readRDS(data)
 
   # perform a correlation test
-  test_1 <- stats::cor.test(~turnout+competitiveness, data = pvr_agg)
+  test_1 <- stats::cor.test(~ turnout + competitiveness, data = pvr_agg)
   tidytest_1 <- broom::tidy(test_1)
 
   # write the results to disk

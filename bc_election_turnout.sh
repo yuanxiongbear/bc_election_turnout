@@ -1,34 +1,40 @@
+#!/bin/bash
+
 # Author: Chad Neald
 # Date: 2020-11-26
 #
 # Usage: 
 # bash bc_election_turnout.sh
 
-# Download the data
+echo "Downloading data...";
 Rscript src/download_data.R \
   https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792/download/provincial_voting_results.csv \
   https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4/download/provincial_voter_participation_by_age_group.csv \
   --path=data/raw
 
-# Clean and process the data
+echo "Cleaning and transforming data...";
 Rscript src/clean_data.R \
   --pvr_input=data/raw/provincial_voting_results.csv \
   --pvp_input=data/raw/provincial_voter_participation_by_age_group.csv \
   --out_dir=data/processed
 
-# Create the plots
+echo "Creating figures...";
 Rscript src/make_figures.R \
   --input=data/processed/bc_election_by_district.rds \
   --out_dir=doc/images
 
-# Run the correlation test
+echo "Performing the statistical test...";
 Rscript src/perform_statistical_test.R \
   --input=data/processed/bc_election_by_district.rds \
   --out_dir=data/processed
 
-# Generate the report and readme
-Rscript -e "rmarkdown::render('doc/bc_election_turnout_report.Rmd', output_format = 'all')"
-Rscript -e "rmarkdown::render('README.Rmd')"
+echo "Generating reports and README...";
+Rscript -e "rmarkdown::render('doc/bc_election_turnout_report.Rmd', 
+                              output_format = 'all', quiet = TRUE)"
+Rscript -e "rmarkdown::render('README.Rmd', quiet = TRUE)"
 
+echo "Cleaning up intermediary files..."
 # Delete unnecessary intermediate .tex file
 rm 'doc/bc_election_turnout_report.tex'
+
+echo "Complete!"
