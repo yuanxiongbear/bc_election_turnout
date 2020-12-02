@@ -64,10 +64,10 @@ Usage
 To download the data, generate the figures, and replicate the analysis
 of this project you need to clone this repository and install all
 dependencies listed below. Once that is complete, you need to run the
-bc\_election\_turnout.sh shell script from the root of this project by
-executing the following from the command line:
+Makefile from the root of this project by executing the following from
+the command line:
 
-    bash bc_election_turnout.sh
+    make all
 
 Dependencies
 ------------
