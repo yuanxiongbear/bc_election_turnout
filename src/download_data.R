@@ -26,7 +26,7 @@ library(docopt)
 opt <- docopt(doc)
 
 main <- function(url_list, path) {
-  
+
   # If the directory does not exist it will be created. If the directory does
   # exist, a message will be output and the script will continue
   dir.create(here::here(path), recursive = TRUE, showWarnings = FALSE)
@@ -51,7 +51,8 @@ main <- function(url_list, path) {
     # Check if the file already exists on the system
     filename <- here::here(path, basename(url_list[[i]]))
     if (file.exists(filename)) {
-      message("File ", basename(filename), " already exists. Skipping download.")
+      message("File ", basename(filename),
+              " already exists. Skipping download.")
     } else {
       download.file(url_list[[i]], filename, quiet = TRUE, mode = "wb")
     }

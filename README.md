@@ -72,6 +72,11 @@ the command line:
 Dependencies
 ------------
 
+To install all dependencies, run the following command in the RStudio
+console from the root of the project.
+
+`remotes::install_deps()`
+
 -   R version 3.6.1 and R packages:
     -   cowplot=1.1.0
     -   dataMaid=1.4
