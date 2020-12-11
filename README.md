@@ -25,10 +25,10 @@ Open Data Licence” available
 (“Elections Bc Open Data Licence,” n.d.). The first data set is the
 [provincial voter
 participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
-(2018a) dataset and the second is the [provincial voting
+(Elections BC 2018a) dataset and the second is the [provincial voting
 results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
-(2018b) dataset. These are referred to as pvp and pvr respectively
-throughout the project repository.
+(Elections BC 2018b) dataset. These are referred to as pvp and pvr
+respectively throughout the project repository.
 
 These data sets give us the opportunity to investigate the relation
 between the share difference in votes between the winner and the runner
@@ -139,11 +139,11 @@ The final report can be found [here](doc/bc_election_turnout_report.md)
 References
 ----------
 
-“Elections Bc Open Data Licence.” n.d.
-<https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
-
-2018a. 2018.
+Elections BC. 2018a. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
 
-2018b. 2018.
+———. 2018b. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
+
+“Elections Bc Open Data Licence.” n.d.
+<https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.

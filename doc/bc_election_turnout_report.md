@@ -49,13 +49,13 @@ question:
 To answer this question, we have used two publicly available data sets
 from the BC government; [provincial voter
 participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
-(2018a) and [provincial voting
+(Elections BC 2018a) and [provincial voting
 results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
-(2018b). These are referred to as pvp and pvr respectively throughout
-the project repository. More details about the data can be found in the
-“Data” section of this report. These data sets give us the opportunity
-to investigate the relation between the share difference in votes
-between the winner and the runner-up and the turn out at different
+(Elections BC 2018b). These are referred to as pvp and pvr respectively
+throughout the project repository. More details about the data can be
+found in the “Data” section of this report. These data sets give us the
+opportunity to investigate the relation between the share difference in
+votes between the winner and the runner-up and the turn out at different
 electoral districts for several years.
 
 Subsequently, we investigate the relationship between the following two
@@ -85,9 +85,9 @@ information licenced under the [Elections BC Open Data
 Licence"](https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf).
 The project makes use of the
 [“provincial\_voter\_participation\_by\_age\_group”](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
-(2018a) dataset and the
+(Elections BC 2018a) dataset and the
 [“provincial\_voting\_results”](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
-(2018b) dataset.
+(Elections BC 2018b) dataset.
 
 The pvp dataset, as the name suggests, includes the number of votes as
 well as the number of registered voters broken down by election and
@@ -178,8 +178,9 @@ Figure 2. A scatter plot displaying competitiveness vs turnout
 
 Performing the Pearson correlation test in R with `cor.test()` produces
 the results in Table 3. We observe a positive correlation of 0.27
-between the competitiveness of a district and its voter turnout. As the
-p-value \(p < .001\) falls below our alpha threshold, we reject the null
+between the competitiveness of a district and its voter turnout. The
+final calculated p-value was found to be \(p < .001\). This p-value
+falls below our alpha threshold of 0.05, therefore we reject the null
 hypothesis and conclude that the linear dependence is statistically
 significant.
 
@@ -236,6 +237,20 @@ Arnold, Jeffrey B. 2019. *Ggthemes: Extra Themes, Scales and Geoms for
 
 de Jonge, Edwin. 2020. *Docopt: Command-Line Interface Specification
 Language*. <https://CRAN.R-project.org/package=docopt>.
+
+</div>
+
+<div id="ref-pvp">
+
+Elections BC. 2018a. 2018.
+<https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
+
+</div>
+
+<div id="ref-pvr">
+
+———. 2018b. 2018.
+<https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
 
 </div>
 
@@ -366,20 +381,6 @@ Annotations for ’Ggplot2’*.
 
 Xie, Yihui. 2020. *Knitr: A General-Purpose Package for Dynamic Report
 Generation in R*. <https://yihui.org/knitr/>.
-
-</div>
-
-<div id="ref-pvp">
-
-2018a. 2018.
-<https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
-
-</div>
-
-<div id="ref-pvr">
-
-2018b. 2018.
-<https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
 
 </div>
 

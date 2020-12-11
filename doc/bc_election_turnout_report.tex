@@ -124,11 +124,11 @@ Are close elections correlated with higher voter turnout?
 To answer this question, we have used two publicly available data sets
 from the BC government;
 \href{https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4}{provincial
-voter participation} (2018a) and
+voter participation} (Elections BC 2018a) and
 \href{https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792}{provincial
-voting results} (2018b). These are referred to as pvp and pvr
-respectively throughout the project repository. More details about the
-data can be found in the ``Data'' section of this report. These data
+voting results} (Elections BC 2018b). These are referred to as pvp and
+pvr respectively throughout the project repository. More details about
+the data can be found in the ``Data'' section of this report. These data
 sets give us the opportunity to investigate the relation between the
 share difference in votes between the winner and the runner-up and the
 turn out at different electoral districts for several years.
@@ -168,9 +168,9 @@ information licenced under the
 \href{https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf}{Elections
 BC Open Data Licence"}. The project makes use of the
 \href{https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4}{``provincial\_voter\_participation\_by\_age\_group''}
-(2018a) dataset and the
+(Elections BC 2018a) dataset and the
 \href{https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792}{``provincial\_voting\_results''}
-(2018b) dataset.
+(Elections BC 2018b) dataset.
 
 The pvp dataset, as the name suggests, includes the number of votes as
 well as the number of registered voters broken down by election and
@@ -237,9 +237,10 @@ zero.
 
 Performing the Pearson correlation test in R with \texttt{cor.test()}
 produces the results in Table 3. We observe a positive correlation of
-0.27 between the competitiveness of a district and its voter turnout. As
-the p-value \(p < .001\) falls below our alpha threshold, we reject the
-null hypothesis and conclude that the linear dependence is statistically
+0.27 between the competitiveness of a district and its voter turnout.
+The final calculated p-value was found to be \(p < .001\). This p-value
+falls below our alpha threshold of 0.05, therefore we reject the null
+hypothesis and conclude that the linear dependence is statistically
 significant.
 
 \begin{longtable}[]{@{}rrrrrrll@{}}
@@ -351,6 +352,14 @@ de Jonge, Edwin. 2020. \emph{Docopt: Command-Line Interface
 Specification Language}.
 \url{https://CRAN.R-project.org/package=docopt}.
 
+\leavevmode\hypertarget{ref-pvp}{}%
+Elections BC. 2018a. 2018.
+\url{https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4}.
+
+\leavevmode\hypertarget{ref-pvr}{}%
+---------. 2018b. 2018.
+\url{https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792}.
+
 \leavevmode\hypertarget{ref-BC_elections_license}{}%
 ``Elections Bc Open Data Licence.'' n.d.
 \url{https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf}.
@@ -430,13 +439,5 @@ Annotations for 'Ggplot2'}.
 \leavevmode\hypertarget{ref-knitr}{}%
 Xie, Yihui. 2020. \emph{Knitr: A General-Purpose Package for Dynamic
 Report Generation in R}. \url{https://yihui.org/knitr/}.
-
-\leavevmode\hypertarget{ref-pvp}{}%
-2018a. 2018.
-\url{https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4}.
-
-\leavevmode\hypertarget{ref-pvr}{}%
-2018b. 2018.
-\url{https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792}.
 
 \end{document}

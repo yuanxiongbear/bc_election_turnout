@@ -40,4 +40,4 @@ clean:
 	rm -rf data/raw
 	rm -rf data/processed
 	rm -rf doc/images
-	rm doc/bc_election_turnout_report.md doc/bc_election_turnout_report.pdf doc/bc_election_turnout_report.html doc/bc_election_turnout_report.tex
+	rm -f doc/bc_election_turnout_report.md doc/bc_election_turnout_report.pdf doc/bc_election_turnout_report.html doc/bc_election_turnout_report.tex

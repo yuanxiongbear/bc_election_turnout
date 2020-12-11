@@ -86,7 +86,7 @@ knitr::include_graphics("images/scatter_plot.png")
 
 ## Results and Discussion
 
-Performing the Pearson correlation test in R with `cor.test()` produces the results in Table 3. We observe a positive correlation of 0.27 between the competitiveness of a district and its voter turnout. As the p-value $p < .001$ falls below our alpha threshold, we reject the null hypothesis and conclude that the linear dependence is statistically significant.
+Performing the Pearson correlation test in R with `cor.test()` produces the results in Table 3. We observe a positive correlation of 0.27 between the competitiveness of a district and its voter turnout. The final calculated p-value was found to be $p < .001$. This p-value falls below our alpha threshold of 0.05, therefore we reject the null hypothesis and conclude that the linear dependence is statistically significant.
 
 ```{r, echo=FALSE}
 cor_test <- readRDS(here::here("data", "processed", "cor_test.rds"))
