@@ -27,7 +27,7 @@ opt <- docopt(doc)
 
 dir.create(here::here(opt$out_dir), recursive = TRUE, showWarnings = FALSE)
 
-dr_scatter_plot <- function(input, out_dir) {
+main <- function(input, out_dir) {
   data <- readRDS(input)
   scatter_plot <- data %>%
     tidyr::drop_na(competitiveness) %>%
@@ -61,4 +61,4 @@ dr_scatter_plot <- function(input, out_dir) {
   )
 }
 
-dr_scatter_plot(opt[["--input"]], opt[["--out_dir"]])
+main(opt[["--input"]], opt[["--out_dir"]])

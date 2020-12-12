@@ -27,7 +27,7 @@ opt <- docopt(doc)
 
 dir.create(here::here(opt$out_dir), recursive = TRUE, showWarnings = FALSE)
 
-dr_cow_plot <- function(input, out_dir) {
+main <- function(input, out_dir) {
   data <- readRDS(input)
   thm <- ggthemes::theme_fivethirtyeight() + theme(axis.title = element_text())
   plot1 <- ggpubr::ggqqplot(na.omit(data$competitiveness),
@@ -42,4 +42,4 @@ dr_cow_plot <- function(input, out_dir) {
   )
 }
 
-dr_cow_plot(opt[["--input"]], opt[["--out_dir"]])
+main(opt[["--input"]], opt[["--out_dir"]])
