@@ -36,7 +36,7 @@ In the past 2020 US election, it was reported [that the voter turnout rate was s
 
 To answer this question, we have used two publicly available data sets from the BC government; [provincial voter participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4) [@pvp] and [provincial voting results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792) [@pvr]. These are referred to as pvp and pvr respectively throughout the project repository. More details about the data can be found in the "Data" section of this report. These data sets give us the opportunity to investigate the relation between the share difference in votes between the winner and the runner-up and the turn out at different electoral districts for several years.
 
-Subsequently, we investigate the relationship between the following two variables measured at the level of the electoral district (ED): voter turnout rate and the competitiveness of a race. The voter turnout rate is calculated as the number of valid votes cast divided by the number of registered voters in an ED for a given election. An electoral district's competitiveness is calculated as the negative difference in share of the votes between winner and runner-up.  We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
+Subsequently, we investigate the relationship between the following two variables measured at the level of the electoral district (ED): voter turnout rate and the competitiveness of a race. The voter turnout rate is calculated as the number of valid votes cast divided by the number of registered voters in an ED for a given election. An electoral district's competitiveness is calculated as the negative difference in share of the votes between winner and runner-up. The smaller magnitude of competitiveness variable is an indicator of closer/ more competitive election.   We will use a two-sided Pearson correlation test via `cor.test()` in R with the following hypotheses:
 
 > **Null Hypothesis:** The correlation coefficient between the voter turnout rate and the race competitiveness is equal to zero. 
 
@@ -78,7 +78,7 @@ The scatter plot of competitiveness and turnout is shown in Figure 2. It shows t
 > **Alternative Hypothesis:**  The corrrelation coefficient between the voter turnout rate and the race competitiveness is not equal to zero. 
 
 
-```{r, fig.cap = "Figure 2. A scatter plot displaying competitiveness vs turnout", echo = FALSE, out.width='100%'}
+```{r, fig.cap = "Figure 2. A scatter plot displaying competitiveness vs turnout. The grey band is a 95% confidence interval of the regression line slope", echo = FALSE, out.width='100%'}
 knitr::include_graphics("images/scatter_plot.png")
 ```
 
