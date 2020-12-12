@@ -43,7 +43,7 @@ This contract file is agreed by memebers of group19 of DSCI_522 of 2020 Universi
 1. Monday at noon.
 2. Lecture session on Tuesday 10:30 am. 
 3. Lab session on Wednesday at 2 pm. 
-4. Friday 5 pm (subject to chang)
+4. Friday 5 pm (subject to change)
 
 
 

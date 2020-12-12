@@ -7,7 +7,7 @@ bibliography: doc/references.bib
 
 authors: Kamal Moravej Jahromi, Chad Neald, Rafael Pilliard Hellwig, Yuan Xiong
 
-date: 28/11/2020
+date: 2020-12-11
 
 A group project for DSCI 522 through the Master of Data Science Program at the University of British Columbia.
 

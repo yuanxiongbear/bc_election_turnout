@@ -5,10 +5,10 @@ author:
 - Chad Neald
 - Rafael Pilliard Hellwig
 - Yuan Xiong
-date: "19/11/2020"
+date: "2020-11-19"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 editor_options:
   chunk_output_type: console
 ---
