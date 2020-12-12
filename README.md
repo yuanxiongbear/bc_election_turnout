@@ -1,15 +1,8 @@
 BC Election Turnout and Competitiveness Project
 ===============================================
 
-authors:
-
--   Kamal Moravej Jahromi
-
--   Chad Neald
-
--   Rafael Pilliard Hellwig
-
--   Yuan Xiong
+authors: Kamal Moravej Jahromi, Chad Neald, Rafael Pilliard Hellwig,
+Yuan Xiong
 
 date: 28/11/2020
 
@@ -32,10 +25,10 @@ Open Data Licence” available
 (“Elections Bc Open Data Licence,” n.d.). The first data set is the
 [provincial voter
 participation](https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4)
-(2018a) dataset and the second is the [provincial voting
+(Elections BC 2018a) dataset and the second is the [provincial voting
 results](https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792)
-(2018b) dataset. These are referred to as pvp and pvr respectively
-throughout the project repository.
+(Elections BC 2018b) dataset. These are referred to as pvp and pvr
+respectively throughout the project repository.
 
 These data sets give us the opportunity to investigate the relation
 between the share difference in votes between the winner and the runner
@@ -61,18 +54,73 @@ captures the positive correlation.
 Usage
 -----
 
-To download the data, generate the figures, and replicate the analysis
-of this project you need to clone this repository and install all
-dependencies listed below. Once that is complete, you need to run the
-Makefile from the root of this project by executing the following from
-the command line:
+Start by cloning this directory to your local machine. Next, you may
+either run the analysis with GNU Make locally (Option 1), or through a
+docker container for maximum reproducibility (Option 2).
 
+For both options, the steps taken by the `make all` command can be shown
+by the following dependency graph:
+
+![](Makefile.png)
+
+### Option 1: Running the analysis locally
+
+To run the analysis using your local installation of R, navigate to the
+root of the project directory. Then start by installing the necessary
+dependencies from inside your R console:
+
+    # Install R dependencies
+    install.packages("remotes")
+    remotes::install_deps()
+
+Next, to download the data, generate the figures, and replicate the
+analysis of this project, run the Makefile from the root of this project
+by executing the following from the command line:
+
+    # Clear out all the data files and analysis
+    make clean
+
+    # Download the data and generate the analysis
     make all
+
+### Option 2: Running the analysis with Docker
+
+For maximum reproducibility, we recommend running the entire analysis
+through Docker. To pull the image from DockerHub, run the following at
+the shell:
+
+    docker pull cneald/bc_election:latest
+
+If you wish to build the image yourself instead of pulling it, you can
+do so by running the following at the shell from the root of the project
+directory:
+
+    docker build -t cneald/bc_election .
+
+To run the analysis inside of the docker container (non-interactively),
+run
+
+    # clear out the project
+    docker run --rm -v $(pwd):/home/rstudio cneald/bc_election make -C home/rstudio clean
+
+    # run the project
+    docker run --rm -v $(pwd):/home/rstudio cneald/bc_election make -C home/rstudio all
+
+Alternatively, you can also work interactively through a RStudio server
+session:
+
+    docker run -it --rm -e PASSWORD=abcd -v /$(pwd):/home/rstudio/ -p 8787:8787 cneald/bc_election
+
+You should change the password from `abcd` to a password of your choice.
+If you are working on a Windows system and have challenges with the
+above command, you may also need to change `/$(pwd)` to an absolute path
+pointing to the root of the project. You can then navigate to
+`localhost:8787` in your browser to interact with the RStudio session.
 
 Dependencies
 ------------
 
--   R version 3.6.1 and R packages:
+-   R version 4.0.3 and R packages:
     -   cowplot=1.1.0
     -   dataMaid=1.4
     -   docopt=0.7.1
@@ -91,11 +139,11 @@ The final report can be found [here](doc/bc_election_turnout_report.md)
 References
 ----------
 
-“Elections Bc Open Data Licence.” n.d.
-<https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
-
-2018a. 2018.
+Elections BC. 2018a. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/6d9db663-8c30-43ec-922b-d541d22e634f/resource/646530d4-078c-4815-8452-c75639962bb4>.
 
-2018b. 2018.
+———. 2018b. 2018.
 <https://catalogue.data.gov.bc.ca/dataset/44914a35-de9a-4830-ac48-870001ef8935/resource/fb40239e-b718-4a79-b18f-7a62139d9792>.
+
+“Elections Bc Open Data Licence.” n.d.
+<https://www.elections.bc.ca/docs/EBC-Open-Data-Licence.pdf>.
